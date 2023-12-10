@@ -9,7 +9,7 @@ export const options = {
 
 				let userRole = "GitHub User";
 
-				if (profile?.email == "umairahmedawn@gmail.com") {
+				if (profile?.email == "umairahmed_88@ymail.com") {
 					userRole = "admin";
 				}
 
@@ -19,7 +19,7 @@ export const options = {
 				};
 			},
 			clientId: process.env.GITHUB_ID,
-			clientSecret: process.env.GITHUB_SECRET,
+			clientSecret: process.env.GITHUB_Secret,
 		}),
 		GoogleProvider({
 			profile(profile) {
@@ -32,7 +32,7 @@ export const options = {
 				};
 			},
 			clientId: process.env.GOOGLE_ID,
-			clientSecret: process.env.GOOGLE_SECRET,
+			clientSecret: process.env.GOOGLE_Secret,
 		}),
 	],
 	callbacks: {
@@ -42,6 +42,8 @@ export const options = {
 		},
 		async session({ session, token }) {
 			if (session?.user) session.user.role = token.role;
+
+			return session;
 		},
 	},
 };
